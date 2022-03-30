@@ -68,7 +68,7 @@ router.post('/vehicleRegister', (req, res) => {
             
             else{
                 console.log('Information posted');
-                res.redirect('/home')
+                res.redirect('/vehicleReport')
             }
         });
     }

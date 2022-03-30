@@ -25,8 +25,12 @@ const userRegister = require('./routes/register');
 const UserRegister = require('./models/userRegist_model');
 const homepage = require('./routes/homepage');
 const batteryRoute = require('./routes/battery');
-const Battery = require('./models/batteryModel');
+// const Battery = require('./models/batteryModel');
 const tyreRouter = require('./routes/tyre');
+const vehicleReport = require('./routes/vehicleReport');
+const signOff = require('./routes/signOff');
+const batteryReport = require('./routes/batteryReport');
+const tyreReport = require('./routes/tyreReport');
 
 
 mongoose.connect(config.database);
@@ -101,6 +105,10 @@ application.use('/', userRegister);
 application.use('/', homepage);
 application.use('/', batteryRoute);
 application.use('/', tyreRouter);
+application.use('/', vehicleReport);
+application.use('/', signOff);
+application.use('/', batteryReport)
+application.use('/', tyreReport);
 // application.get('/', () => {
 //     res.render('message', {message: req.flash('Sucessfully submitted')});
 // })

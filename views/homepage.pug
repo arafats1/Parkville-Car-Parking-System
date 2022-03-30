@@ -11,21 +11,13 @@ div
   img.homepage-bg(src='./images/bob-flavin-pic.jpg' alt='Image')
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .container
-      a.nav-link.nav-item(href='#') Parking
+      a.nav-link.nav-item(href='/home' style='font-size: 23px') Welcome to Parkville System
       button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
         ul.nav.me-auto.mb-2.mb-lg-0
-          li.nav-item
-            a.nav-link.nav-item(aria-current='page' href='#') Add Vehicle/Boda Boda
-          li.nav-item.dropdown
-            a#navbarDropdown.nav-link.nav-item.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-              | Generate Report
-            ul.dropdown-menu(aria-labelledby='navbarDropdown')
-              li
-                a.dropdown-item(href='#') Parking Report
-              li
-                a.dropdown-item(href='#') Sign-off Report
+          
+         
         // This is the logout button
         form.d-flex
           button.btn.btn-outline-success.logout-button(type='submit') Logout
@@ -33,21 +25,21 @@ div
     .row
       .col-3
         .row
-          .card.home-card.bg-light(style='width: 15rem;')
+          .card.home-card.bg-light(style='width: 16rem;')
             img.card-img-top(src='/images/car parking.jpg' alt='...')
             .card-body
-              a.btn.btn-primary.card-button(href='/vehicleReg') Go to Parking Section 
-          .card.home-card.bg-light(style='width: 15rem;')
+              a.btn.btn-primary.card-button(href='/vehicleReg' style='font-size:17px;') Go to Parking Section 
+          .card.home-card.bg-light(style='width: 16rem;')
             img.card-img-top(src='/images/car-battery-work.jpg' alt='...')
             .card-body
-              a.btn.btn-primary.card-button(href='/battery') Go Battery Section
+              a.btn.btn-primary.card-button(href='/battery' style='font-size:17px;') Go Battery Section
       .col
         .row
-          .card.home-card.bg-light(style='width: 15rem;')
+          .card.home-card.bg-light(style='width: 16rem;')
             img.card-img-top(src='/images/tyre clinic.jpg' alt='Tyre clinic')
             .card-body
-              a.btn.btn-primary.card-button(href='/tyre') Go to tyre clinic Section
-          .card.home-card.bg-light(style='width: 15rem;')
+              a.btn.btn-primary.card-button(href='/tyre' style='font-size:17px;') Go to Tyre Section
+          .card.home-card.bg-light(style='width: 16rem;')
             img.card-img-top(src='/images/car wash.jpg' alt='...')
             .card-body
               a.btn.btn-primary.card-button.disabled(href='#') Coming Soon 
