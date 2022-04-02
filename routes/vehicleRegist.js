@@ -35,6 +35,7 @@ router.post('/vehicleRegister', (req, res) => {
     req.checkBody('phoneNumber', 'Phone number required').notEmpty();
     req.checkBody('entryDate', 'Entry date required').notEmpty();
     req.checkBody('entryTime', 'Entry time required').notEmpty();
+    
 
     //Incase there are errors
     let errors = req.validationErrors();
@@ -73,5 +74,32 @@ router.post('/vehicleRegister', (req, res) => {
         });
     }
 });
+
+// DELETE USER
+router.get('/vehicleReport(:id)', function(req, res, next) {
+    userModel.findByIdAndRemove(req.params.id, (err, doc) => {
+        if (!err) {
+            res.redirect('/vehicleReport');
+        } else {
+            console.log('Failed to Delete user Details: ' + err);
+        }
+    });
+});
+
+
+// // Delete post
+// router.delete('/:id', function(req, res){
+//     let query = {_id: req.params.id};
+  
+//     Register.remove(query, function(err){
+//       if(err) {
+//         console.error(err);
+//         return;
+//       } else {
+//         req.flash('success', 'Vehicle Deleted')
+//         res.send('Success');
+//       }
+//     });
+//   });
 
 module.exports = router;

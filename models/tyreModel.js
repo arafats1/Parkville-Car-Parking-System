@@ -12,6 +12,10 @@ const tyreSchema = mongoose.Schema({
         type: String
     },
 
+    amount:{
+        type: Number
+    },
+
     tyrepressure:{
         type: Number
     }, 

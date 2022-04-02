@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/public/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="/public/styles.css" rel="stylesheet">
+  <script src="/public/bootstrap/js/bootstrap.js"></script>
+  <title>Vehicle Registration</title>
+</head>
+
+<body class="bg-wrap-reg">
+
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+      <div class="container">
+        <a class="nav-link nav-item" href="#">Parking</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="nav me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item">
+              <a class="nav-link nav-item" aria-current="page" href="#">Add Vehicle/Boda Boda</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Generate Report
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Parking Report</a></li>
+                <li><a class="dropdown-item" href="#">Sign-off Report</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- This is the logout button -->
+          <form class="d-flex ">
+            <button class="btn btn-outline-success logout-button" type="submit">Logout</button>
+          </form>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- End of the nav bar -->
+
+
+
+
+    <div class=" container py-5 h-100 ">
+      <div class="container row justify-content-center ">
+        <div class="card bg-light">
+
+
+
+
+
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Number Plate</th>
+                <th scope="col">Time of Parking</th>
+                <th scope="col">Type of Vehicle</th>
+                <th scope="col">Time</th>
+                <th scope="col">Date</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>@mdo</td>
+                <td>
+                  <div>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop">Edit</button>
+
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop">Delete</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade modal-dialog modal-dialog-centered" id="staticBackdrop"
+                      data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Delete Vehicle</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            Confirm delete
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <!-- <button type="button" class="btn btn-primary">Delete</button> -->
+                            <a class="btn btn-success delete" href="../users/delete/<%= data[i]._id%>">Delete</a> </td>
+                        </tr>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+
+            </tbody>
+          </table>
+
+
+</body>

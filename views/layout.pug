@@ -16,7 +16,7 @@ div
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
         ul.nav.me-auto.mb-2.mb-lg-0
-          a.nav-link.nav-item(href='#') Sign-off Vehicle
+          a.nav-link.nav-item(href='/signoff') Sign-off Vehicle/Boda Boda
           li.nav-item.dropdown
             a#navbarDropdown.nav-link.nav-item.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
               | Generate Report
@@ -24,10 +24,10 @@ div
               li
                 a.dropdown-item(href='/vehicleReport') Parking Report
               li
-                a.dropdown-item(href='/signoff') Sign-off Report
+                a.dropdown-item(href='/signoffReport') Sign-off Report
         // This is the logout button
         form.d-flex
-          button.btn.btn-outline-success.logout-button(type='submit') Logout 
+          a.btn.btn-outline-success.logout-button(href='/') Logout
   // End of the nav bar
 
   block content 

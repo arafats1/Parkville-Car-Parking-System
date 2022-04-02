@@ -11,71 +11,65 @@ div
   img.img-bg(src='/images/bob-flavin-pic.jpg' alt='Image')
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .container
-      a.nav-link.nav-item(href='#') 
+      | Already registered? 
+      a.nav-link.nav-item(href='/') Login
+     
       button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
         ul.nav.me-auto.mb-2.mb-lg-0
           li.nav-item
-            a.nav-link.nav-item(aria-current='page' href='#') 
-          li.nav-item.dropdown
-            a#navbarDropdown(href='#' role='button' data-bs-toggle='' aria-expanded='false')
-              
-            ul.dropdown-menu(aria-labelledby='navbarDropdown')
-              li
-                a.dropdown-item(href='#') 
-              li
-                a.dropdown-item(href='#') 
-        
-        
-      
+         
+            
+            
+        // This is the logout button
+        form.d-flex
+          a.btn.btn-outline-success.logout-button(href='/') Logout
+  // End of the nav bar
   .container.py-5.h-100
     .container.row.justify-content-center
       .col.col-xl-10
         .card.bg-light
-          .container.col-md-9
+          .container.col-md-7
             .container
-              form.form-horizontal.regform(role='form' action='/register' method='POST' onsubmit='return validateRegister();')
-                h2 Manager Registration
+              form.form-horizontal(name='register' method='POST' action='/register' onsubmit="return validateForm()" )
+                h2 Registration
                 .form-group
                   label.col-sm-3.control-label(for='firstName') First Name*
                   .col-sm-9
-                    input#firstname.form-control(type='text' placeholder='First Name' autofocus='' name='firstname')
-                    div
-                      span#firstNameError
+                    input#firstname.form-control(type='text' placeholder='First Name' size='50' onblur='userN(4,12)' autofocus='' name='firstname')
+                  #fName.text-danger.font-weight-bold.small
+                  // i commented this work incase you need it
+                  // <div><span id="firstNameError"></span></div>
                 br
                 .form-group
                   label.col-sm-3.control-label(for='lastName') Last Name*
                   .col-sm-9
-                    input#lastname.form-control(type='text' placeholder='Last Name' autofocus='' name='lastname')
-                    div 
-                      span#lastNameError
-                
+                    input#lastname.form-control(type='text' placeholder='Last Name' size='50' onblur='usern(4,12)' autofocus='' name='lastname')
+                  #lName.text-danger.font-weight-bold.small
+                  // <div><span id="lNameError"></span></div>
                 br
                 .form-group
-                  label.col-sm-3.control-label(for='email') Email* 
+                  label.col-sm-3.control-label(for='email') Email
                   .col-sm-9
-                    input#email.form-control(type='email' placeholder='Email' name='email')
-                    div
-                      span#emailError
+                    input#email.form-control(type='email' placeholder='Email' size='50' onblur='userE()' name='email')
+                  #email2.text-danger.font-weight-bold.small
+                  // <div><span id="emailError"></span></div>
                 br
                 .form-group
                   label.col-sm-3.control-label(for='password') Password*
                   .col-sm-9
-                    input#password.form-control(type='password' placeholder='Password' name='password' onChange = 'onChange()')
-                    div 
-                      span#passwordError
+                    input#password.form-control(type='password' placeholder='Password' size='50' onblur='passW(8,12)' name='password')
+                    #pwd.text-danger.font-weight-bold.small
+                    // <div><small><span id="passwordError"></span></small></div>
                 br
                 .form-group
                   label.col-sm-3.control-label(for='password') Confirm Password*
                   .col-sm-9
-                    input#confirmpassword.form-control(type='password' placeholder='Password' name='confirmpassword' onChange = 'onChange()')
-                    div
-                      span#confirmPasswordError
-                
-              
-                    br
-                
+                    input#confirmpassword.form-control(type='password' placeholder='Password' size='50' onblur='passC()' name='confirmpassword')
+                    #pwdd.text-danger.font-weight-bold.small
+                    // <div><small><span id="passwordError"></span></small></div>
+                  br
 
                   label.col-sm-3.control-label(for='vehicleType')
                      Vehicle  Manager Role*
@@ -85,29 +79,17 @@ div
                       option(value='parkingManager') Parking section Manager
                       option(value='batteryManager') Battery section manager
                       option(value='tyreManager') Car tyre clinic section manager
-                    br
-                
-                        
-                  
-                // /.form-group
-                .form-group
-                  .col-sm-9.col-sm-offset-3
-                    span.help-block *Required fields
-                  br
-                
-                button.btn.btn-primary.btn-block(type='submit' style='margin-left: 70px;') Register
+                br
+                button.btn.btn-primary.btn-block(type='submit' style='margin-left: 70px;') Signup
                 button.btn.btn-primary.btn-block(type='reset' style='margin-left: 60px;') Clear
-              
-
-// Footer
-footer.page-footer.font-small.blue.bg-light
-  // Copyright
-  .footer-copyright.text-center.py-3
-    | &copy; 2022 Copyright:
-    a(href='/')  Parkville Day and Night Parking
-
-script(src='/validation.js')
-  // Copyright
-// Footer
-           
-            
+              // /form
+            // ./container
+            // Footer
+            footer.page-footer.font-small.blue.bg-light
+              // Copyright
+              .footer-copyright.text-center.py-3
+                | &copy; 2022 Copyright:
+                a(href='/')  Parkville Day and Night Parking
+              // Copyright
+            script(src='/validation.js')
+            // Footer

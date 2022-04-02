@@ -1,0 +1,99 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(href='/bootstrap/css/bootstrap.css' rel='stylesheet')
+  link(href='/styles.css' rel='stylesheet')
+  script(src='/bootstrap/js/bootstrap.js')
+  title Vehicle Registration
+div
+  img.img-bg(src='../images/bob-flavin-pic.jpg' alt='Image')
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    .container
+      a.nav-link.nav-item(href='/home') Home
+      a.nav-link.nav-item(href='/vehicleReg') Add Vehicle/Boda Boda
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.nav.me-auto.mb-2.mb-lg-0
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.nav-item.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+              | Generate Report
+            ul.dropdown-menu(aria-labelledby='navbarDropdown')
+              li
+                a.dropdown-item(href='/signoffReport') Sign-off Report
+        // This is the logout button
+        form.d-flex
+          a.btn.btn-outline-success.logout-button(href='/') Logout
+  // End of the nav bar
+
+  // Start of the form section
+  .container.py-5.h-100
+    .container.row.justify-content-center
+      .col.col-xl-10
+        .card.bg-light
+          .container.col-md-9
+            form.form-horizontal.regform(role='form' method='POST' action='/signoff')
+              h2  Sign Off
+              .form-group
+                label.col-sm-3.control-label(for='firstName') Name
+                .col-sm-9
+                  input#firstname.form-control(type='text' placeholder='Customer Name' autofocus='' name='name')
+              br
+              .form-group
+                label.col-sm-3.control-label(for='firstName') Gender
+                .col-sm-9
+                  select.form-control(name='gender' autofocus='')
+                    option(value='Default' selected='') Click to select gender
+                    option(value='male') Male
+                    option(value='female') Female
+              br
+              .form-group
+                label.col-sm-3.control-label(for='Nin') NIN Number*
+                .col-sm-9
+                  input#usernin.form-control(type='text' placeholder='Enter NIN number' autofocus='' name='usernin')
+              br
+              // Adding phone number,
+              .form-group
+                label.col-sm-3.control-label(for='phone') Phone Number
+                .col-sm-9
+                  input#email.form-control(type='text' placeholder='Customer Phone Number' name='phonenumber')
+              br
+              .form-group
+                label.col-sm-3.control-label(for='receipt') Receipt Number
+                .col-sm-9
+                  input#receipt.form-control(type='number' placeholder='Enter Receipt Number' name='receipt')
+              
+              br
+              .form-group
+                label.col-sm-3.control-label(for='receipt') Car Model
+                .col-sm-9
+                  input#model.form-control(type='text' placeholder='Enter Signing off car model' name='model')
+              br
+              .form-group
+                label.col-sm-3.control-label(for='date') Date
+                .col-sm-9
+                  input#date.form-control(type='date' name='date')
+                  div
+                    small
+                      span#birthDateError
+              br
+              .form-group
+                label.col-sm-3.control-label(for='time') Time
+                .col-sm-9
+                  input#entryTime.form-control(type='time' placeholder='Enter Entry time' name='time')
+              br
+              br
+              button.btn.btn-primary.btn-block(type='submit' style='margin-left: 70px;') Register
+              button.btn.btn-primary.btn-block(type='reset' style='margin-left: 60px;') Clear
+            // /form
+          // ./container
+// Footer
+footer.page-footer.font-small.blue.bg-light
+  // Copyright
+  .footer-copyright.text-center.py-3
+    | &copy; 2022 Copyright:
+    a(href='/')  Parkville Day and Night Parking
+  // Copyright
+// Footer

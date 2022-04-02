@@ -41,7 +41,7 @@ router.post('/battery', (req, res) => {
         }
 
         else{
-            res.redirect('/home')
+            res.redirect('/batteryReport')
 
         }
     });

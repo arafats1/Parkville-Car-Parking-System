@@ -25,7 +25,7 @@ div
               
         // This is the logout button
         form.d-flex
-          button.btn.btn-outline-success.logout-button(type='submit') Logout
+         a.btn.btn-outline-success.logout-button(href='/') Logout
   // End of the nav bar
   // Start of the form section
   .container.py-5.h-100
@@ -68,6 +68,12 @@ div
                     b Car Model
                   .col-sm-9
                     input#carModel.form-control(type='text' placeholder='Car Model' name='carmodel')
+                  br
+                  .form-group
+                  label.col-sm-3.control-label(for='amount')
+                    b Amount
+                  .col-sm-9
+                    input#amount.form-control(type='number' placeholder='Enter total amount' name='amount')
                 br
                 hr(width='365' size='10' style='color:blue;')
                 br

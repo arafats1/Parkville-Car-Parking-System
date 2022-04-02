@@ -4,18 +4,60 @@ head
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   link(href='/bootstrap/css/bootstrap.css' rel='stylesheet')
-  link(href='/styles2.css' rel='stylesheet')
+  link(href='/styles.css' rel='stylesheet')
   script(src='/bootstrap/js/bootstrap.js')
-  title Parkville parking
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  .container
-    a.nav-link.nav-item(href='/home') Home
-    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-      span.navbar-toggler-icon
-    #navbarSupportedContent.collapse.navbar-collapse
-      ul.nav.me-auto.mb-2.mb-lg-0
-        
-      // This is the logout button
-      form.d-flex
-        button.btn.btn-outline-success.logout-button(type='submit') Logout
-// End of the nav bar
+  title Vehicle Registration
+div
+ 
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    .container
+      a.nav-link.nav-item(href='/home') Home
+      a.nav-link.nav-item(href='/battery') Add Battery
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.nav.me-auto.mb-2.mb-lg-0
+          li.nav-item.dropdown
+            
+        // This is the logout button
+        form.d-flex
+          button.btn.btn-outline-success.logout-button(type='submit' onclick="window.print()" style='margin-right:200px;') Print Report
+          a.btn.btn-outline-success.logout-button(href='/') Logout
+  // End of the nav bar
+  .container.py-5.h-100
+    .container.row.justify-content-center
+      .card.bg-light
+        table.table
+          thead.thead-dark
+            tr
+              th(scope='col') Date
+              th(scope='col') Battery Size
+              th(scope='col') Amount
+              
+          tbody
+            if batteries.length 
+            each battery in batteries
+             tr     
+              td #{battery.date}
+              td #{battery.battery}
+              td #{battery.amount} 
+              td
+          
+                  div
+                  button.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop' style='background-color:#222d41; margin-right: 5px;') Edit
+                  button.btn.btn-danger(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop') Delete
+                  // Modal
+                  #staticBackdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+                    .modal-dialog
+                      .modal-content
+                        .modal-header
+                          h5#staticBackdropLabel.modal-title Delete Vehicle
+                          button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                        .modal-body
+                          | Confirm delete
+                        .modal-footer
+                          button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+                          //- button.btn.btn-primary(type='button' data-id=register._id) Delete
+                          a.btn.btn-danger.delete-register(href='#' ) Delete
+
+              

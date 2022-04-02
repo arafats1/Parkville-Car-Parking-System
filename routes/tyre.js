@@ -13,6 +13,7 @@ router.post('/tyre', (req, res) => {
     const tyre = req.body.tyre;
     const tyresize = req.body.tyresize;
     const carmodel = req.body.carmodel;
+    const amount = req.body.amount;
     const tyrepressure = req.body.tyrepressure;
     const puncture = req.body.puncture;
     const valves = req.body.valves;
@@ -29,6 +30,7 @@ router.post('/tyre', (req, res) => {
             tyre:tyre,
             tyresize: tyresize,
             carmodel: carmodel,
+            amount:amount,
             tyrepressure: tyrepressure,
             puncture: puncture,
             valves: valves,
@@ -43,7 +45,7 @@ router.post('/tyre', (req, res) => {
             }
 
             else{
-                res.redirect('/home')
+                res.redirect('/tyreReport')
             }
         });
     }

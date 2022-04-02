@@ -28,7 +28,8 @@ const batteryRoute = require('./routes/battery');
 // const Battery = require('./models/batteryModel');
 const tyreRouter = require('./routes/tyre');
 const vehicleReport = require('./routes/vehicleReport');
-const signOff = require('./routes/signOff');
+const signOffReport = require('./routes/signoffReport');
+const signoff = require('./routes/signoff');
 const batteryReport = require('./routes/batteryReport');
 const tyreReport = require('./routes/tyreReport');
 
@@ -106,7 +107,8 @@ application.use('/', homepage);
 application.use('/', batteryRoute);
 application.use('/', tyreRouter);
 application.use('/', vehicleReport);
-application.use('/', signOff);
+application.use('/', signOffReport);
+application.use('/', signoff)
 application.use('/', batteryReport)
 application.use('/', tyreReport);
 // application.get('/', () => {
