@@ -50,4 +50,19 @@ router.post('/battery', (req, res) => {
 
 });
 
+// DELETE Battery
+router.get('/deleteBattery/:id', async(req, res)=> {
+    try{
+      await Battery.deleteOne({_id:req.params.id})
+      res.redirect('/batteryReport');
+  
+    }
+   
+    catch{
+          res.status(400).send('Unable to delete from database');
+      
+      
+        }
+    });
+
 module.exports = router;

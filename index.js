@@ -15,8 +15,6 @@ const expressSession = require('express-session')({
 
 
 
-  
-
 const config = require('./config/database');
 // const database = require('./config/database');
 const loginPage = require('./routes/loginPage');
@@ -111,6 +109,7 @@ application.use('/', signOffReport);
 application.use('/', signoff)
 application.use('/', batteryReport)
 application.use('/', tyreReport);
+application.use('/vehicle', vehicleRegister)
 // application.get('/', () => {
 //     res.render('message', {message: req.flash('Sucessfully submitted')});
 // })

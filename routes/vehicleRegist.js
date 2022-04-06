@@ -67,39 +67,89 @@ router.post('/vehicleRegister', (req, res) => {
                 return; 
             }
             
-            else{
+            else{  
                 console.log('Information posted');
-                res.redirect('/vehicleReport')
+                res.redirect('/vehicleReport')            
             }
         });
     }
 });
 
-// DELETE USER
-router.get('/vehicleReport(:id)', function(req, res, next) {
-    userModel.findByIdAndRemove(req.params.id, (err, doc) => {
-        if (!err) {
-            res.redirect('/vehicleReport');
-        } else {
-            console.log('Failed to Delete user Details: ' + err);
-        }
+//Loading editing form
+router.get('/edit/:id', function(req, res){
+    Register.findById(req.params.id, function(err, newRegister){
+      res.render('editVehicle', {
+        newRegister: newRegister
+      });
     });
-});
+  });
 
 
-// // Delete post
-// router.delete('/:id', function(req, res){
-//     let query = {_id: req.params.id};
+// update submit new article 
+router.post('/edit/:id', function(req, res){
+    let newRegister = {};
+    newRegister.drivername = req.body.drivername;
+    newRegister.numberplate = req.body.numberplate;
+    newRegister.parkingtime = req.body.parkingtime;
+    newRegister.carmodel = req.body.carmodel;
+    newRegister.amount = req.body.amount;
+    
   
-//     Register.remove(query, function(err){
-//       if(err) {
-//         console.error(err);
-//         return;
-//       } else {
-//         req.flash('success', 'Vehicle Deleted')
-//         res.send('Success');
-//       }
-//     });
-//   });
+    let query = {_id: req.params.id};
+  
+    Register.updateOne(query, newRegister, function(err){
+      if(err) {
+        console.error(err);
+        return;
+      } else {
+        res.redirect('/vehicleReport');
+      }
+    })
+  });
+
+// Delete post
+// router.post('/deleteVehicle', async(req, res)=> {
+//   try{
+//     //We pick an item using an id
+//     const deletedUser =await Register.deleteOne({_id:req.body.id})
+//     console.log('This is my deleted user', deletedUser);
+//     res.redirect('/vehicleReport');
+
+//   }
+//   catch{
+//     res.status(400).send('Unable to delete Vehicle from database');
+
+
+//   }
+
+// });
+
+// DELETE USER
+router.get('/deleteVehicle/:id', async(req, res)=> {
+  try{
+    await Register.deleteOne({_id:req.params.id})
+    res.redirect('/vehicleReport');
+  }
+ 
+  catch{
+        res.status(400).send('Unable to delete Vehicle from database');
+      }
+  });
+
+  // UPDATE USER
+router.post('/editVehicle/:id', async(req, res)=> {
+  try{
+    await Register.updateOne({_id:req.params.id})
+    res.redirect('/vehicleReport');
+  }
+ 
+  catch{
+        res.status(400).send('Unable to delete Vehicle from database'); 
+      }
+  });
+
+
+
+
 
 module.exports = router;

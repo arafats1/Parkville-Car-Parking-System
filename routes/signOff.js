@@ -49,4 +49,19 @@ router.post('/signoff', (req,res)=> {
     }
 });
 
+// DELETE A sign off entry
+router.get('/deleteSignoff/:id', async(req, res)=> {
+    try{
+      await Signoff.deleteOne({_id:req.params.id})
+      res.redirect('/signoffReport');
+  
+    }
+   
+    catch{
+          res.status(400).send('Unable to delete from database');
+      
+      
+        }
+    });
+
 module.exports = router;

@@ -3,12 +3,13 @@ extends layout
 block content 
     .container.py-4.h-100
     .row.justify-content-center
-      .col.col-xl-8
+      .col.col-xl-9
         .card.bg-light
           .container.col-md-9
-            .container
+            
               form.form-horizontal.regform(role='form' action='/vehicleRegister' method='POST')
-                h2  Add Vehicle / Boda Boda
+                h2.form-title   Add Vehicle / Boda Boda
+                br
                 .form-group
                   label.col-sm-3.control-label(for='vehicleType')
                     b Vehicle Type*
@@ -78,9 +79,9 @@ block content
                   .col-sm-9
                     select.form-control(name='parkingtime' autofocus='' required)
                       option(value='Default' selected='') Click to Select period
-                      option(value='Day') Day
-                      option(value='Night') Night
-                      option(value='Less than 3 hours') Less than 3 hours
+                      option(value='DAY') Day
+                      option(value='NIGHT') Night
+                      option(value='LESS THAN 3 HOURS') Less Thann 3 Hours
                       
                 br
                 
@@ -104,5 +105,5 @@ block content
                     span.help-block * All fields required
                 br
 
-                button.btn.btn-primary.btn-block(type='submit' style='margin-left: 70px;') Register
-                button.btn.btn-primary.btn-block(type='reset' style='margin-left: 60px;') Clear
+                button.btn.btn-primary.btn-block(type='submit' style='margin-left: 150px; background-color:#222d41;') Register
+                button.btn.btn-outline-success.logout-button(type='reset' style='margin-left: 10px; border-color:#222d41;') Clear

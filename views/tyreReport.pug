@@ -21,8 +21,8 @@ div
             
         // This is the logout button
         form.d-flex
-          button.btn.btn-outline-success.logout-button(type='submit' onclick="window.print()" style='margin-right:200px;') Print Report
-          a.btn.btn-outline-success.logout-button(href='/') Logout
+          button.btn.btn-outline-success.logout-button(type='submit' onclick="window.print()" style='margin-right:200px; border-color:#222d41;') Print Report
+          a.btn.btn-outline-success.logout-button(href='/' style='border-color:#222d41;') Logout
   // End of the nav bar
   .container.py-5.h-100
     .container.row.justify-content-center
@@ -30,43 +30,48 @@ div
         table.table
           thead.thead-dark
             tr
-              th(scope='col') Date
-              th(scope='col') Tyre
-              th(scope='col') Tyre Size
-              th(scope='col') Car model
-              th(scope='col') Tyre Pressure
-              th(scope='col') Tyre puncture
-              th(scope='col') Valves
-              th(scope='col') Tyre Price
+              th(scope='col' class='th') Date
+              th(scope='col' class='th') Tyre
+              th(scope='col' class='th') Tyre Size
+              th(scope='col' class='th') Car model
+              th(scope='col' class='th') Tyre Pressure
+              th(scope='col' class='th') Tyre puncture
+              th(scope='col' class='th') Valves
+              th(scope='col' class='th') Tyre Price
               
           tbody
             if tyres.length 
             each tyre in tyres
              tr     
-              td #{tyre.date}
-              td #{tyre.tyre}
-              td #{tyre.tyresize}
-              td #{tyre.carmodel}
-              td #{tyre.tyrepressure}
-              td #{tyre.puncture}
-              td #{tyre.valves}
-              td #{tyre.amount}
+              td(class='td') #{tyre.date}
+              td(class='td') #{tyre.tyre}
+              td(class='td') #{tyre.tyresize}
+              td(class='td') #{tyre.carmodel}
+              td(class='td') #{tyre.tyrepressure}
+              td(class='td') #{tyre.puncture}
+              td(class='td') #{tyre.valves}
+              td(class='td') #{tyre.amount}
+              td
           
-                  div
-                  button.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop' style='background-color:#222d41; margin-right: 5px;') Edit
-                  button.btn.btn-danger(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop') Delete
-                  // Modal
-                  #staticBackdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
-                    .modal-dialog
-                      .modal-content
-                        .modal-header
-                          h5#staticBackdropLabel.modal-title Delete Vehicle
-                          button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-                        .modal-body
-                          | Confirm delete
-                        .modal-footer
-                          button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                          //- button.btn.btn-primary(type='button' data-id=register._id) Delete
-                          a.btn.btn-danger.delete-register(href='#' ) Delete
+                 div
+                      button.btn.btn-primary(type='submit'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
+                        img(src='../images/edit4.png' style='width: 20px; height: 20px;')
 
-              
+                    
+                      button.btn.btn-danger(type='submit' data-bs-toggle='modal' data-bs-target='#staticBackdrop')
+                        img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
+                    
+                      #staticBackdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+                        .modal-dialog
+                          .modal-content
+                            .modal-header
+                              h5#staticBackdropLabel.modal-title Delete Vehicle
+                              button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                            .modal-body
+                              | Confirm delete
+                            .modal-footer
+                              button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+                              form(method="GET" action="/deleteTyre/"+tyre._id)
+                                input(type="hidden" name="delete" value=tyre._id)
+                                button.btn.btn-danger(type='submit' data-bs-toggle='modal' data-bs-target='#staticBackdrop') Delete
+                      

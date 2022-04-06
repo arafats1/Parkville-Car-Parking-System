@@ -25,7 +25,7 @@ div
                 a.dropdown-item(href='/signoffReport') Sign-off Report
         // This is the logout button
         form.d-flex
-          a.btn.btn-outline-success.logout-button(href='/') Logout
+          a.btn.btn-outline-success.logout-button(href='/' style='border-color:#222d41;') Logout
   // End of the nav bar
 
   // Start of the form section
@@ -35,14 +35,17 @@ div
         .card.bg-light
           .container.col-md-9
             form.form-horizontal.regform(role='form' method='POST' action='/signoff')
-              h2  Sign Off
+              h2.form-title   Sign Off
+              br
               .form-group
-                label.col-sm-3.control-label(for='firstName') Name
+                label.col-sm-3.control-label(for='firstName') 
+                  b Name
                 .col-sm-9
                   input#firstname.form-control(type='text' placeholder='Customer Name' autofocus='' name='name')
               br
               .form-group
-                label.col-sm-3.control-label(for='firstName') Gender
+                label.col-sm-3.control-label(for='firstName')
+                  b Gender
                 .col-sm-9
                   select.form-control(name='gender' autofocus='')
                     option(value='Default' selected='') Click to select gender
@@ -50,29 +53,34 @@ div
                     option(value='female') Female
               br
               .form-group
-                label.col-sm-3.control-label(for='Nin') NIN Number*
+                label.col-sm-3.control-label(for='Nin')
+                  b NIN Number*
                 .col-sm-9
                   input#usernin.form-control(type='text' placeholder='Enter NIN number' autofocus='' name='usernin')
               br
               // Adding phone number,
               .form-group
-                label.col-sm-3.control-label(for='phone') Phone Number
+                label.col-sm-3.control-label(for='phone') 
+                  b Phone Number
                 .col-sm-9
                   input#email.form-control(type='text' placeholder='Customer Phone Number' name='phonenumber')
               br
               .form-group
-                label.col-sm-3.control-label(for='receipt') Receipt Number
+                label.col-sm-3.control-label(for='receipt') 
+                  b Receipt Number
                 .col-sm-9
                   input#receipt.form-control(type='number' placeholder='Enter Receipt Number' name='receipt')
               
               br
               .form-group
-                label.col-sm-3.control-label(for='receipt') Car Model
+                label.col-sm-3.control-label(for='receipt') 
+                  b Car Model
                 .col-sm-9
                   input#model.form-control(type='text' placeholder='Enter Signing off car model' name='model')
               br
               .form-group
-                label.col-sm-3.control-label(for='date') Date
+                label.col-sm-3.control-label(for='date') 
+                  b Date
                 .col-sm-9
                   input#date.form-control(type='date' name='date')
                   div
@@ -80,13 +88,14 @@ div
                       span#birthDateError
               br
               .form-group
-                label.col-sm-3.control-label(for='time') Time
+                label.col-sm-3.control-label(for='time') 
+                  b Time
                 .col-sm-9
                   input#entryTime.form-control(type='time' placeholder='Enter Entry time' name='time')
               br
               br
-              button.btn.btn-primary.btn-block(type='submit' style='margin-left: 70px;') Register
-              button.btn.btn-primary.btn-block(type='reset' style='margin-left: 60px;') Clear
+              button.btn.btn-primary.btn-block(type='submit' style='margin-left: 150px; background-color:#222d41;') Register
+              button.btn.btn-outline-success.logout-button(type='reset' style='margin-left: 10px; border-color:#222d41;') Clear
             // /form
           // ./container
 // Footer

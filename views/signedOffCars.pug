@@ -6,6 +6,7 @@ head
   link(href='/bootstrap/css/bootstrap.css' rel='stylesheet')
   link(href='/styles.css' rel='stylesheet')
   script(src='/bootstrap/js/bootstrap.js')
+  script(src='/pop.js')
   title Vehicle Registration
 div
  
@@ -26,8 +27,8 @@ div
             
         // This is the logout button
         form.d-flex
-          button.btn.btn-outline-success.logout-button(type='submit' onclick="window.print()" style='margin-right:200px;') Print Report
-          a.btn.btn-outline-success.logout-button(href='/') Logout
+          button.btn.btn-outline-success.logout-button(type='submit' onclick="window.print()" style='margin-right:200px; border-color:#222d41;') Print Report
+          a.btn.btn-outline-success.logout-button(href='/' style='border-color:#222d41;') Logout
   // End of the nav bar
   .container.py-5.h-100
     .container.row.justify-content-center
@@ -35,41 +36,31 @@ div
         table.table
           thead.thead-dark
             tr
-              th(scope='col') Date
-              th(scope='col') Time
-              th(scope='col') Car/Boda Model
-              th(scope='col') Driver Name
-              th(scope='col') Phone Number
-              th(scope='col') Receipt Number
+              th(scope='col' class='th') Date
+              th(scope='col' class='th') Time
+              th(scope='col' class='th') Car/Boda Model
+              th(scope='col' class='th') Driver Name
+              th(scope='col' class='th') Phone Number
+              th(scope='col' class='th') Receipt Number
             
           tbody
             if signoffs.length 
             each signoff in signoffs
              tr     
-              td #{signoff.date}
-              td #{signoff.time}
-              td #{signoff.model}
-              td #{signoff.name}
-              td #{signoff.phonenumber}
-              td #{signoff.receipt}
+              td(class='td') #{signoff.date}
+              td(class='td') #{signoff.time}
+              td(class='td') #{signoff.model}
+              td(class='td') #{signoff.name}
+              td(class='td') #{signoff.phonenumber}
+              td(class='td') #{signoff.receipt}
              
               td
           
                   div
-                  button.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop' style='background-color:#222d41; margin-right: 5px;') Edit
-                  button.btn.btn-danger(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop') Delete
-                  // Modal
-                  #staticBackdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
-                    .modal-dialog
-                      .modal-content
-                        .modal-header
-                          h5#staticBackdropLabel.modal-title Delete Vehicle
-                          button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-                        .modal-body
-                          | Confirm delete
-                        .modal-footer
-                          button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                          //- button.btn.btn-primary(type='button' data-id=register._id) Delete
-                          a.btn.btn-danger.delete-register(href='#' ) Delete
+                        button.btn.btn-primary(type='submit'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
+                          img(src='../images/edit4.png' style='width: 20px; height: 20px;')
 
-              
+                          form(method="GET" action="/deleteSignoff/"+signoff._id)
+                            input(type="hidden" name="delete" value=signoff._id)
+                            button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
+                              img(src='../images/delete-332.png' style='width: 20px; height: 20px;')

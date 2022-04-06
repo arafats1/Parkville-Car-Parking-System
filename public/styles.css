@@ -1,6 +1,9 @@
 body{
-    font-family: Calibri, Helvetica, sans-serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* font-family: Calibri, Helvetica, sans-serif; */
     background-color: #222d41;
+   
+    
 }
 
 
@@ -27,7 +30,7 @@ body{
 
   .homepage-bg{
     opacity: 0.1;
-    position: absolute;
+    position:fixed;
     left: 0;
     top: 0;
     width: 100%;
@@ -163,7 +166,18 @@ a {
     margin-right: -5px;
    
 }
+.th{
+    font-size: 18px;
+    color: #222d41;
+    text-transform: uppercase;
+}
 
+.form-title{
+    margin-top: 30px;
+}
 
+.td{
+    text-transform: uppercase;
+}
 
 

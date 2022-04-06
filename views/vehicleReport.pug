@@ -6,6 +6,7 @@ head
   link(href='/bootstrap/css/bootstrap.css' rel='stylesheet')
   link(href='/styles.css' rel='stylesheet')
   script(src='/bootstrap/js/bootstrap.js')
+  script(src='/pop.js')
   title Vehicle Registration
 div
  
@@ -25,8 +26,8 @@ div
                 a.dropdown-item(href='/signoffReport') Sign-off Report
         // This is the logout button
         form.d-flex
-          button.btn.btn-outline-success.logout-button(type='submit' onclick="window.print()" style='margin-right:200px;') Print Report
-          a.btn.btn-outline-success.logout-button(href='/') Logout
+          button.btn.btn-outline-success.logout-button(type='submit' onclick="window.print()" style='margin-right:200px; border-color:#222d41;') Print Report
+          a.btn.btn-outline-success.logout-button(href='/' style='border-color:#222d41;') Logout
   // End of the nav bar
   .container.py-5.h-100
     .container.row.justify-content-center
@@ -34,41 +35,34 @@ div
         table.table
           thead.thead-dark
             tr
-              th(scope='col') Entry Date
-              th(scope='col') Entry Time
-              th(scope='col') Driver Name
-              th(scope='col') Number Plate
-              th(scope='col') Parking Period
-              th(scope='col') Type of vehicle
-              th(scope='col') Amount
+              
+              th(scope='col' class='th') Entry Date
+              th(scope='col' class='th') Entry Time
+              th(scope='col' class='th') Driver Name
+              th(scope='col' class='th') Number Plate
+              th(scope='col' class='th') Parking Period
+              th(scope='col' class='th') Type of vehicle
+              th(scope='col' class='th') Amount
           tbody
             if registers.length 
             each register in registers
              tr 
-              td #{register.entrydate} 
-              td #{register.entrytime}   
-              td #{register.drivername}
-              td #{register.numberplate}
-              td #{register.parkingtime}
-              td #{register.carmodel}
-              td #{register.amount}
+             
+              td(class='td') #{register.entrydate}  
+              td(class='td') #{register.entrytime}   
+              td(class='td') #{register.drivername}
+              td(class='td') #{register.numberplate}
+              td(class='td') #{register.parkingtime}
+              td(class='td') #{register.carmodel}
+              td(class='td') #{register.amount}
               td
           
                   div
-                  button.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop' style='background-color:#222d41; margin-right: 5px;') Edit
-                  button.btn.btn-danger(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop') Delete
-                  // Modal
-                  #staticBackdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
-                    .modal-dialog
-                      .modal-content
-                        .modal-header
-                          h5#staticBackdropLabel.modal-title Delete Vehicle
-                          button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-                        .modal-body
-                          | Confirm delete
-                        .modal-footer
-                          button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                          //- button.btn.btn-primary(type='button' data-id=register._id) Delete
-                          a.btn.btn-danger.delete-register(href='#' ) Delete
+                      
+                      button.btn.btn-primary(type='submit' href='/vehicle/edit/'+register._id  style='background-color:#f1f1f1; margin-right: 5px;' )
+                        img(src='../images/edit4.png' style='width: 20px; height: 20px;')
 
-              
+                        form(method="GET" action="/deleteVehicle/"+register._id)
+                          input(type="hidden" name="delete" value=register._id)
+                          button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
+                            img(src='../images/delete-332.png' style='width: 20px; height: 20px;')

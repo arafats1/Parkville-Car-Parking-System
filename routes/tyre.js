@@ -51,4 +51,20 @@ router.post('/tyre', (req, res) => {
     }
 });
 
+// DELETE Tyre Data
+router.get('/deleteTyre/:id', async(req, res)=> {
+    try{
+      await Tyre.deleteOne({_id:req.params.id})
+      res.redirect('/tyreReport');
+  
+    }
+   
+    catch{
+          res.status(400).send('Unable to delete Vehicle from database');
+      
+      
+        }
+    });
+  
+
 module.exports = router;
