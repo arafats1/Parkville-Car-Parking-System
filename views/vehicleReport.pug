@@ -43,6 +43,7 @@ div
               th(scope='col' class='th') Parking Period
               th(scope='col' class='th') Type of vehicle
               th(scope='col' class='th') Amount
+
           tbody
             if registers.length 
             each register in registers
@@ -55,14 +56,14 @@ div
               td(class='td') #{register.parkingtime}
               td(class='td') #{register.carmodel}
               td(class='td') #{register.amount}
-              td
-          
-                  div
-                      
-                      button.btn.btn-primary(type='submit' href='/vehicle/edit/'+register._id  style='background-color:#f1f1f1; margin-right: 5px;' )
-                        img(src='../images/edit4.png' style='width: 20px; height: 20px;')
+              td 
+                  a(href="/update/"+register._id) Update btn
+                  
+               
+                      //- button.btn.btn-primary(type='submit' href='/vehicle/edit/'+register._id  style='background-color:#f1f1f1; margin-right: 5px;' )
+                      //-   img(src='../images/edit4.png' style='width: 20px; height: 20px;')
 
-                        form(method="GET" action="/deleteVehicle/"+register._id)
-                          input(type="hidden" name="delete" value=register._id)
-                          button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
-                            img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
+                      form(method="GET" action="/deleteVehicle/"+register._id)
+                        input(type="hidden" name="delete" value=register._id)
+                        button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
+                          img(src='../images/delete-332.png' style='width: 20px; height: 20px;')

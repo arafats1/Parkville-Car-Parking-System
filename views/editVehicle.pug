@@ -32,26 +32,27 @@ div
         .card.bg-light
           .container.col-md-10
             .container
+              if register 
             
-                form(method='POST', action='vehicle/edit/'+newRegister._id)
-            .form-group
-                label Driver Name:
-                input.form-control(name='drivername', type='text', value=newRegister.drivername)
-                br
-            .form-group
-                label Number Plate:
-                input.form-control(name='numberplate', type='text', value=newRegister.numberplate)
-                br
-            .form-group
-                label Parking Period:
-                input.form-control(name='parkingtime', type='text', value=newRegister.parkingtime)
-                br
-            .form-group
-                label Vehicle Type:
-                input.form-control(name='carmodel', type='text', value=newRegister.carmodel)
-                br
-            .form-group
-                label Amount:
-                input.form-control(name='amount', type='text', value=newRegister.amount)
-                br
-            input.btn.btn-primary(type='submit' value='Submit')
+                form(method='POST', action='/update?id='+register._id)
+                  .form-group
+                      label Driver Name:
+                      input.form-control(name='drivername', type='text', value=register.drivername)
+                      br
+                  .form-group
+                      label Number Plate:
+                      input.form-control(name='numberplate', type='text', value=register.numberplate)
+                      br
+                  .form-group
+                      label Parking Period:
+                      input.form-control(name='parkingtime', type='text', value=register.parkingtime)
+                      br
+                  .form-group
+                      label Vehicle Type:
+                      input.form-control(name='carmodel', type='text', value=register.carmodel)
+                      br
+                  .form-group
+                      label Amount:
+                      input.form-control(name='amount', type='text', value=register.amount)
+                      br
+                  input.btn.btn-primary(type='submit' value='Submit')

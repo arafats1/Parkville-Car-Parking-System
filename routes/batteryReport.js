@@ -8,7 +8,7 @@ router.get('/batteryReport', async(req,res)=>{
     // to pick data from the 
     try {
         // helps return all the members in the collection clients
-        const data = await Battery.find({});
+        const data = await Battery.find({}).sort({$natural:-1});
         // console.log('All batteries hired',data);
         // let totalPayprice = await Client.aggregate({totalPayprice:{$sum: '$paidprice'}})
         // gives us the file dash and come with the client data or client has same info with data

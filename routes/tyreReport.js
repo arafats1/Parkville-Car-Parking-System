@@ -7,7 +7,7 @@ router.get('/tyreReport', async(req,res)=>{
     // to pick data from the 
     try {
         // helps return all the members in the collection clients
-        const data = await Tyre.find({});
+        const data = await Tyre.find({}).sort({$natural:-1});
         // console.log('>>>>>> all tyres',data);
 
         res.render('tyreReport', {tyres : data})

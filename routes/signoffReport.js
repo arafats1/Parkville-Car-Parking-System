@@ -6,7 +6,7 @@ const Signoff = require('../models/signoffModel');
 
 router.get('/signoffReport', async(req,res) => {
     try{
-        const data = await Signoff.find({})
+        const data = await Signoff.find({}).sort({$natural:-1});
         res.render('signedoffCars', {signoffs: data})
     }
 

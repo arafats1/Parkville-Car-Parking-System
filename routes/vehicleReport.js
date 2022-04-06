@@ -9,7 +9,7 @@ router.get('/vehicleReport', async(req,res)=>{
     // to pick data from the database
     try {
         // helps return all the members in the collection clients
-        const data = await Register.find({});
+        const data = await Register.find({}).sort({$natural:-1});
         
         res.render('vehicleReport', {registers : data})
       } catch(error) {
