@@ -9,10 +9,16 @@ router.get('/batteryReport', async(req,res)=>{
     try {
         // helps return all the members in the collection clients
         const data = await Battery.find({}).sort({$natural:-1});
-        // console.log('All batteries hired',data);
-        // let totalPayprice = await Client.aggregate({totalPayprice:{$sum: '$paidprice'}})
-        // gives us the file dash and come with the client data or client has same info with data
-        res.render('batteryReport', {batteries : data})
+       
+         //The sum aggregate
+         let totalBattery = await Battery.aggregate([
+          {$group:{_id:'$all', totalBattery:{ $sum:'$amount'}}}
+        ]);
+        res.render('batteryReport', {
+          batteries : data,
+          total:totalBattery[0]
+
+        })
       } catch(error) {
         return res.status(400).send(
           { 

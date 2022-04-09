@@ -1,3 +1,9 @@
-function myFunction() {
-    confirm("Press a button!");
+function confirmAction() {
+
+  if (confirm('Confirm delete')) {
+  
+  } else {
+   
   }
+
+}

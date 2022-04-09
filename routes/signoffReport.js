@@ -7,7 +7,15 @@ const Signoff = require('../models/signoffModel');
 router.get('/signoffReport', async(req,res) => {
     try{
         const data = await Signoff.find({}).sort({$natural:-1});
-        res.render('signedoffCars', {signoffs: data})
+
+        //The sum aggregate
+        let totalSignoff = await Signoff.aggregate([
+            {$group:{_id:'$all', totalSignoff:{ $sum: 1}}}
+          ]);
+        res.render('signedoffCars', {
+            signoffs: data,
+            total:totalSignoff[0]
+        });
     }
 
     catch(error){

@@ -51,23 +51,6 @@ application.engine('pug', require('pug').__express);
 application.set('view engine', 'pug');
 application.set('views', path.join(__dirname, 'views') );
 
-//Express session middleware
-// application.use(expressSession({
-//     secret: 'keyboard cat',
-//     resave: true,
-//     saveUninitialized: true
-//   }));
-
-//Password configuration
-// require('./config/passport')(passport);
-
-// application.use(passport.initialize());
-// application.use(passport.session());
-// application.get('*', (req, res, next) => {
-//     res.locals.user = req.user || null;
-//     next();
-// });
-  
 
 //Body parser middle-ware section
 application.use(express.urlencoded({extended:false}));
@@ -88,11 +71,11 @@ passport.deserializeUser(UserRegister.deserializeUser()); //This terminates the 
 
 
 //Express message middleware called flash
-application.use(require('connect-flash')());
-application.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res);
-  next();
-});
+// application.use(require('connect-flash')());
+// application.use(function (req, res, next) {
+//   res.locals.messages = require('express-messages')(req, res);
+//   next();
+// });
 
 
 

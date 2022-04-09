@@ -45,10 +45,24 @@ div
               td
           
                 div
-                      button.btn.btn-primary(type='submit'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
+                    a(href='/updatebattery/'+battery._id )
+                      button.btn.btn-primary(type='button'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
                           img(src='../images/edit4.png' style='width: 20px; height: 20px;')
                 
                           form(method="GET" action="/deleteBattery/"+battery._id)
                             input(type="hidden" name="delete" value=battery._id)
-                            button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
+                            button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='confirmAction()' data-bs-target='#staticBackdrop')
                               img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
+
+        table.table
+            thead.thead-dark
+              tr
+              
+                th(scope='col' class='th')
+                th(scope='col' class='th') 
+                th(scope='col' class='th')
+                th(scope='col' class='th') 
+                th(scope='col' class='th') 
+                th(scope='col' class='th')   
+                th(scope='col' class='th') Total Amount
+                th(scope='col' class='th') #{new Intl.NumberFormat().format(total.totalBattery)}Ugx

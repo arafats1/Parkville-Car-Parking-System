@@ -54,24 +54,39 @@ div
               td
           
                  div
-                      button.btn.btn-primary(type='submit'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
-                        img(src='../images/edit4.png' style='width: 20px; height: 20px;')
+                     
+                    a(href='/tyreupdate/'+tyre._id )
+                      button.btn.btn-primary(type='button'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
+                          img(src='../images/edit4.png' style='width: 20px; height: 20px;')
+                
+                          form(method="GET" action="/deleteBattery/"+tyre._id)
+                            input(type="hidden" name="delete" value=tyre._id)
+                            button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
+                              img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
 
-                    
-                      button.btn.btn-danger(type='submit' data-bs-toggle='modal' data-bs-target='#staticBackdrop')
-                        img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
-                    
-                      #staticBackdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
-                        .modal-dialog
-                          .modal-content
-                            .modal-header
-                              h5#staticBackdropLabel.modal-title Delete Vehicle
-                              button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-                            .modal-body
-                              | Confirm delete
-                            .modal-footer
-                              button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                              form(method="GET" action="/deleteTyre/"+tyre._id)
-                                input(type="hidden" name="delete" value=tyre._id)
-                                button.btn.btn-danger(type='submit' data-bs-toggle='modal' data-bs-target='#staticBackdrop') Delete
-                      
+
+        table.table
+          thead.thead-dark
+            tr
+              
+              th(scope='col' class='th')
+              th(scope='col' class='th') 
+              th(scope='col' class='th')
+              th(scope='col' class='th') 
+              th(scope='col' class='th') 
+              th(scope='col' class='th')   
+              th(scope='col' class='th') Total Amount
+              th(scope='col' class='th') #{new Intl.NumberFormat().format(total.totalTyre)}Ugx
+
+        //- table.table
+        //-   thead.thead-dark
+        //-     tr
+              
+              
+        //-       th(scope='col' class='th') 
+        //-       th(scope='col' class='th')
+        //-       th(scope='col' class='th') 
+        //-       th(scope='col' class='th') 
+        //-       th(scope='col' class='th')   
+        //-       th(scope='col' class='th') Total Valves
+        //-       th(scope='col' class='th') #{new Intl.NumberFormat().format(total.totalValves)}Ugx

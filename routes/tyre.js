@@ -51,6 +51,31 @@ router.post('/tyre', (req, res) => {
     }
 });
 
+//Editing route
+router.get("/tyreupdate/:id", async (req, res) => {
+    // if (req.session.user) {
+      try {
+        const updateTyre = await Tyre.findOne({ _id: req.params.id })
+        res.render('editTyre', { tyre: updateTyre })
+        // res.json(user);
+      } catch (error) {
+        res.status(400).send("unable to find the user in the database");
+      }
+  });
+  
+  router.post("/tyreupdate", async (req, res) => {
+    // if (req.session.user) {
+      try {
+        await Tyre.findOneAndUpdate({ _id: req.query.id }, req.body)
+        res.redirect("/tyreReport");
+        // console.log(_id);
+        // res.redirect("back");
+      } catch (error) {
+        res.status(400).send("unable to update tyre");
+      }
+  });
+  
+
 // DELETE Tyre Data
 router.get('/deleteTyre/:id', async(req, res)=> {
     try{

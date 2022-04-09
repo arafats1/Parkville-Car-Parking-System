@@ -56,11 +56,27 @@ div
              
               td
           
-                  div
-                        button.btn.btn-primary(type='submit'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
-                          img(src='../images/edit4.png' style='width: 20px; height: 20px;')
+                    div
+                        
+                        a(href='/updates/'+signoff._id )
+                          button.btn.btn-primary(type='button'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
+                              img(src='../images/edit4.png' style='width: 20px; height: 20px;')
+                    
+                              form(method="GET" action="/deleteBattery/"+signoff._id)
+                                input(type="hidden" name="delete" value=signoff._id)
+                                button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
+                                  img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
 
-                          form(method="GET" action="/deleteSignoff/"+signoff._id)
-                            input(type="hidden" name="delete" value=signoff._id)
-                            button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
-                              img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
+
+          table.table
+            thead.thead-dark
+              tr
+              
+                th(scope='col' class='th')
+                th(scope='col' class='th') 
+                th(scope='col' class='th')
+                th(scope='col' class='th') 
+                th(scope='col' class='th') 
+                th(scope='col' class='th')   
+                th(scope='col' class='th') Total Signed Off Cars: &nbsp; #{new Intl.NumberFormat().format(total.totalSignoff)}
+                

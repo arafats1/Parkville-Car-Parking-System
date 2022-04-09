@@ -6,7 +6,7 @@ head
   link(href='/bootstrap/css/bootstrap.css' rel='stylesheet')
   link(href='/styles.css' rel='stylesheet')
   script(src='/bootstrap/js/bootstrap.js')
-  title Vehicle Registration
+  title Parkville
 div
   img.img-bg(src='/images/bob-flavin-pic.jpg' alt='Image')
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
@@ -31,13 +31,13 @@ div
         .card.bg-light
           .container.col-md-10
             .container
-              form.form-horizontal.regform(name='register' method='POST' action='/register' onsubmit="return validateForm()" )
+              form.form-horizontal.regform#formReg(name='register' method='POST' action='/register')
                 h2.form-title Registration
                 br
                 .form-group
                   label.col-sm-3.control-label(for='firstName') First Name*
                   .col-sm-9
-                    input#firstname.form-control(type='text' placeholder='First Name' size='50' onblur='userN(4,12)' autofocus='' name='firstname' required)
+                    input#firstname.form-control(type='text' placeholder='First Name' size='50' onblur='userN(4,12)' autofocus='' name='firstname')
                   #fName.text-danger.font-weight-bold.small
                   // i commented this work incase you need it
                   // <div><span id="firstNameError"></span></div>
@@ -45,28 +45,28 @@ div
                 .form-group
                   label.col-sm-3.control-label(for='lastName') Last Name*
                   .col-sm-9
-                    input#lastname.form-control(type='text' placeholder='Last Name' size='50' onblur='usern(4,12)' autofocus='' name='lastname' required)
+                    input#lastname.form-control(type='text' placeholder='Last Name' size='50' onblur='usern(4,12)' autofocus='' name='lastname')
                   #lName.text-danger.font-weight-bold.small
                   // <div><span id="lNameError"></span></div>
                 br
                 .form-group
                   label.col-sm-3.control-label(for='email') Email
                   .col-sm-9
-                    input#email.form-control(type='email' placeholder='Email' size='50' onblur='userE()' name='email' autofocus='' required)
+                    input#email.form-control(type='email' placeholder='Email' size='50' onblur='userE()' name='email' autofocus='')
                   #email2.text-danger.font-weight-bold.small
                   // <div><span id="emailError"></span></div>
                 br
                 .form-group
                   label.col-sm-3.control-label(for='password') Password*
                   .col-sm-9
-                    input#password.form-control(type='password' placeholder='Password' size='50' onblur='passW(8,12)' name='password' autofocus='' required)
+                    input#password.form-control(type='password' placeholder='Password' size='50' onblur='passW(8,12)' name='password' autofocus='')
                     #pwd.text-danger.font-weight-bold.small
                     // <div><small><span id="passwordError"></span></small></div>
                 br
                 .form-group
                   label.col-sm-3.control-label(for='password') Confirm Password*
                   .col-sm-9
-                    input#confirmpassword.form-control(type='password' placeholder='Password' size='50' onblur='passC()' name='confirmpassword' autofocus='' required)
+                    input#confirmpassword.form-control(type='password' placeholder='Password' size='50' onblur='passC()' name='confirmpassword' autofocus='')
                     #pwdd.text-danger.font-weight-bold.small
                     // <div><small><span id="passwordError"></span></small></div>
                   br
@@ -74,7 +74,7 @@ div
                   label.col-sm-3.control-label(for='vehicleType')
                      Vehicle  Manager Role*
                   .col-sm-9
-                    select.form-control(name='role' autofocus='' required)
+                    select.form-control(name='role' autofocus='' )
                       option(value='Default' selected='') Click to Select Role
                       option(value='parkingManager') Parking section Manager
                       option(value='batteryManager') Battery section manager

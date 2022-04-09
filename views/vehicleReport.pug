@@ -43,8 +43,11 @@ div
               th(scope='col' class='th') Parking Period
               th(scope='col' class='th') Type of vehicle
               th(scope='col' class='th') Amount
+             
+
 
           tbody
+            //- p #{new Intl.NumberFormat().format(total.totalParking)}Ugx
             if registers.length 
             each register in registers
              tr 
@@ -56,14 +59,28 @@ div
               td(class='td') #{register.parkingtime}
               td(class='td') #{register.carmodel}
               td(class='td') #{register.amount}
-              td 
-                  a(href="/update/"+register._id) Update btn
-                  
-               
-                      //- button.btn.btn-primary(type='submit' href='/vehicle/edit/'+register._id  style='background-color:#f1f1f1; margin-right: 5px;' )
-                      //-   img(src='../images/edit4.png' style='width: 20px; height: 20px;')
 
-                      form(method="GET" action="/deleteVehicle/"+register._id)
-                        input(type="hidden" name="delete" value=register._id)
-                        button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
-                          img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
+              td 
+
+                  div
+                    a(href='/update/'+register._id )
+                      button.btn.btn-primary(type='button'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
+                          img(src='../images/edit4.png' style='width: 20px; height: 20px;')
+                
+                          form(method="GET" action="/deleteBattery/"+register._id)
+                            input(type="hidden" name="delete" value=register._id)
+                            button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
+                              img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
+                  
+        table.table
+          thead.thead-dark
+            tr
+              
+              th(scope='col' class='th')
+              th(scope='col' class='th') 
+              th(scope='col' class='th')
+              th(scope='col' class='th') 
+              th(scope='col' class='th') 
+              th(scope='col' class='th')   
+              th(scope='col' class='th') Total Amount
+              th(scope='col' class='th') #{new Intl.NumberFormat().format(total.totalParking)}Ugx

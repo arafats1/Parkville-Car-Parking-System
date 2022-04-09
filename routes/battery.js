@@ -50,6 +50,30 @@ router.post('/battery', (req, res) => {
 
 });
 
+// Editing Batteries
+router.get("/updatebattery/:id", async (req, res) => {
+    // if (req.session.user) {
+      try {
+        const updateBattery = await Battery.findOne({ _id: req.params.id })
+        res.render('batteryedit', { battery: updateBattery })
+        // res.json(user);
+      } catch (error) {
+        res.status(400).send("unable to find the user in the database");
+      }
+  });
+  
+  router.post("/updatebattery", async (req, res) => {
+    // if (req.session.user) {
+      try {
+        await Battery.findOneAndUpdate({ _id: req.query.id }, req.body)
+        res.redirect("/batteryReport");
+        // console.log(_id);
+        // res.redirect("back");
+      } catch (error) {
+        res.status(400).send("unable to update vehicle");
+      }
+  });
+
 // DELETE Battery
 router.get('/deleteBattery/:id', async(req, res)=> {
     try{
