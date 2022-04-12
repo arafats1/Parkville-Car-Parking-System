@@ -51,7 +51,7 @@ div
                 
                           form(method="GET" action="/deleteBattery/"+battery._id)
                             input(type="hidden" name="delete" value=battery._id)
-                            button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='confirmAction()' data-bs-target='#staticBackdrop')
+                            button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
                               img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
 
         table.table

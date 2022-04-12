@@ -10,6 +10,7 @@ router.get('/tyre', (req, res) => {
 });
 
 router.post('/tyre', (req, res) => {
+  try {
     const tyre = req.body.tyre;
     const tyresize = req.body.tyresize;
     const carmodel = req.body.carmodel;
@@ -45,10 +46,15 @@ router.post('/tyre', (req, res) => {
             }
 
             else{
-                res.redirect('/tyreReport')
+                res.redirect('/tyreReport?alert=success')
             }
         });
     }
+    
+  } catch (error) {
+    res.status(400).render('tyre',{alert:'error'});
+  }
+    
 });
 
 //Editing route
@@ -79,6 +85,7 @@ router.get("/tyreupdate/:id", async (req, res) => {
 // DELETE Tyre Data
 router.get('/deleteTyre/:id', async(req, res)=> {
     try{
+      await Tyre.findById(req.params.id)
       await Tyre.deleteOne({_id:req.params.id})
       res.redirect('/tyreReport');
   

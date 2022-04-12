@@ -13,6 +13,10 @@ div
     .container
       a.nav-link.nav-item(href='/home') Home
       a.nav-link.nav-item(href='/tyre') Add Tyre
+      if alert =='success'
+          div.alert.alert-success Sucessfully registered tyre
+      if alert =='error'
+          div.alert.alert-danger Failed to register tyre
       button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
@@ -59,7 +63,7 @@ div
                       button.btn.btn-primary(type='button'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
                           img(src='../images/edit4.png' style='width: 20px; height: 20px;')
                 
-                          form(method="GET" action="/deleteBattery/"+tyre._id)
+                          form(method="GET" action="/deleteTyre/"+tyre._id)
                             input(type="hidden" name="delete" value=tyre._id)
                             button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
                               img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
@@ -69,24 +73,28 @@ div
           thead.thead-dark
             tr
               
-              th(scope='col' class='th')
-              th(scope='col' class='th') 
-              th(scope='col' class='th')
-              th(scope='col' class='th') 
-              th(scope='col' class='th') 
-              th(scope='col' class='th')   
-              th(scope='col' class='th') Total Amount
-              th(scope='col' class='th') #{new Intl.NumberFormat().format(total.totalTyre)}Ugx
+             
+              th(scope='col' class='th') Total Tyre Revenue
+              th(scope='col' class='th')  #{new Intl.NumberFormat().format(total.totalTyre)}Ugx
 
-        //- table.table
-        //-   thead.thead-dark
-        //-     tr
+
+        table.table
+          thead.thead-dark
+            tr
               
-              
-        //-       th(scope='col' class='th') 
-        //-       th(scope='col' class='th')
-        //-       th(scope='col' class='th') 
-        //-       th(scope='col' class='th') 
-        //-       th(scope='col' class='th')   
-        //-       th(scope='col' class='th') Total Valves
-        //-       th(scope='col' class='th') #{new Intl.NumberFormat().format(total.totalValves)}Ugx
+              th(scope='col' class='th') Total Valves Revenue
+              th(scope='col' class='th') &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #{new Intl.NumberFormat().format(total.totalValves)}Ugx
+
+        table.table
+          thead.thead-dark
+            tr
+                 
+              th(scope='col' class='th') Total Pressure revenue
+              th(scope='col' class='th') &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; #{new Intl.NumberFormat().format(total.totalPressure)}Ugx
+
+        table.table
+          thead.thead-dark
+            tr
+
+              th(scope='col' class='th') Total Puncture revenue
+              th(scope='col' class='th') &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; #{new Intl.NumberFormat().format(total.totalPuncture)}Ugx

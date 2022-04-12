@@ -1,43 +1,37 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const expressValidator = require('express-validator');
 const passport = require('passport');
 const flash = require('connect-flash');
-const bodyParser = require('body-parser');
+const cors = require('cors')
 const expressSession = require('express-session')({
     secret: 'secret',
     resave: false,
     saveUninitialized: false
   });
 
-  const cors = require('cors')
-
-
-
+  
+//Defining variables, routes and models
 const config = require('./config/database');
-// const database = require('./config/database');
 const loginPage = require('./routes/loginPage');
 const vehicleRegister = require('./routes/vehicleRegist');
 const userRegister = require('./routes/register');
 const UserRegister = require('./models/userRegist_model');
 const homepage = require('./routes/homepage');
 const batteryRoute = require('./routes/battery');
-// const Battery = require('./models/batteryModel');
 const tyreRouter = require('./routes/tyre');
 const vehicleReport = require('./routes/vehicleReport');
 const signOffReport = require('./routes/signoffReport');
 const signoff = require('./routes/signoff');
 const batteryReport = require('./routes/batteryReport');
 const tyreReport = require('./routes/tyreReport');
+const application = express();
 
-
+//Establishing connection to the database
 mongoose.connect(config.database);
 const db = mongoose.connection;
 
-//Checking connection
-const application = express();
-
+//Testing the connection to the database
 db.once('open', () => {
     console.log('Successfully connected to the Database');
 });
@@ -63,22 +57,11 @@ application.use(expressSession);
 application.use(passport.initialize()); 
 application.use(passport.session()); 
 application.use(cors());
+application.use(flash());
 
 passport.use(UserRegister.createStrategy());
 passport.serializeUser(UserRegister.serializeUser()); //This generates a serial number to the user who has logged in
 passport.deserializeUser(UserRegister.deserializeUser()); //This terminates the serial number after user logs out
-
-
-
-//Express message middleware called flash
-// application.use(require('connect-flash')());
-// application.use(function (req, res, next) {
-//   res.locals.messages = require('express-messages')(req, res);
-//   next();
-// });
-
-
-
 
 //Routes section
 application.use('/', loginPage);
@@ -92,20 +75,13 @@ application.use('/', signOffReport);
 application.use('/', signoff)
 application.use('/', batteryReport)
 application.use('/', tyreReport);
-application.use('/vehicle', vehicleRegister)
-// application.get('/', () => {
-//     res.render('message', {message: req.flash('Sucessfully submitted')});
-// })
-// application.use('/vehicleRegister', vehicleRegister);
-//application.use('/register', userRegister);
 
-//Check listening now
-
+//Thss is a message just incase a user hits unexistent router instead of crushing
 application.get('*', (req, res) => {
     res.status(404).send('This is an invalid URL')
-  }); //Thss is a message just incase a user hits unexistent router instead of crushing
+  }); 
 
-  
+//Establishing a port to a connection to the database
 application.listen(4000, () => {
     console.log('Listening at port 4000');
 });

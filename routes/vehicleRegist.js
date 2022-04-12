@@ -94,7 +94,6 @@ router.post("/update", async (req, res) => {
 // DELETE USER
 router.get('/deleteVehicle/:id', async(req, res)=> {
   try{
-    const register = await Register.findById(req.params.id)
     await Register.deleteOne({_id:req.params.id})
     res.redirect('/vehicleReport');
   }

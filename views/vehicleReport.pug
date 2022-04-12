@@ -38,10 +38,10 @@ div
               
               th(scope='col' class='th') Entry Date
               th(scope='col' class='th') Entry Time
-              th(scope='col' class='th') Driver Name
+              th(scope='col' class='th') Type of Vehicle
               th(scope='col' class='th') Number Plate
               th(scope='col' class='th') Parking Period
-              th(scope='col' class='th') Type of vehicle
+              th(scope='col' class='th') Driver Name
               th(scope='col' class='th') Amount
              
 
@@ -54,10 +54,10 @@ div
              
               td(class='td') #{register.entrydate}  
               td(class='td') #{register.entrytime}   
-              td(class='td') #{register.drivername}
+              td(class='td') #{register.carmodel}
               td(class='td') #{register.numberplate}
               td(class='td') #{register.parkingtime}
-              td(class='td') #{register.carmodel}
+              td(class='td') #{register.drivername}
               td(class='td') #{register.amount}
 
               td 
@@ -67,7 +67,7 @@ div
                       button.btn.btn-primary(type='button'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
                           img(src='../images/edit4.png' style='width: 20px; height: 20px;')
                 
-                          form(method="GET" action="/deleteBattery/"+register._id)
+                          form(method="GET" action="/deleteVehicle/"+register._id)
                             input(type="hidden" name="delete" value=register._id)
                             button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
                               img(src='../images/delete-332.png' style='width: 20px; height: 20px;')

@@ -7,81 +7,91 @@ block content
         .card.bg-light
           .container.col-md-9
             
-              form.form-horizontal.regform(role='form' action='/vehicleRegister' method='POST')
+              form.form-horizontal.regform( action='/vehicleRegister' method='POST' onsubmit='return vehicleform();')
                 h2.form-title   Add Vehicle / Boda Boda
                 br
                 .form-group
                   label.col-sm-3.control-label(for='vehicleType')
                     b Vehicle Type*
                   .col-sm-9
-                    select.form-control(name='vehicle' autofocus='' required)
+                    select#vehicletype.form-control(name='vehicle' autofocus='')
                       option(value='Default' selected='') Click to Select Type of Vehicle
                       option(value='trucks') Truck
                       option(value='PersonalCars') Personal Car
                       option(value='taxi') Taxi
                       option(value='costers') Coaster
                       option(value='bodas') Boda-Boda
+                    #vehicletypeError.text-danger.font-weight-bold.small
                 br
                 .form-group
                   label.col-sm-3.control-label(for='numberPlate')
                     b Number Plate*
                   .col-sm-9
-                    input#numberplate.form-control(type='text' placeholder='Car Number Plate' autofocus='' name='numberPlate' required)
+                    input#numberplate.form-control(type='text' placeholder='Car Number Plate' autofocus='' name='numberPlate')
+                    #numberplateError.text-danger.font-weight-bold.small
                 br
                 .form-group
                   label.col-sm-3.control-label(for='model')
                     b Model*
                   .col-sm-9
-                    input#carcolor.form-control(type='text' placeholder='Car Model' name='carModel' required)
+                    input#carmodel.form-control(type='text' placeholder='Car Model' name='carModel')
+                    #carmodelError.text-danger.font-weight-bold.small
                 br
 
                 .form-group
                   label.col-sm-3.control-label(for='model')
                     b Color
                   .col-sm-9
-                    input#carcolor.form-control(type='text' placeholder='Vehicle color' name='carColor' required)
+                    input#carcolor.form-control(type='text' placeholder='Vehicle color' name='carColor')
+                    #carcolorError.text-danger.font-weight-bold.small
                 br
                 .form-group
                   label.col-sm-3.control-label(for='driverName')
                     b Driver Name*
                   .col-sm-9
-                    input#drivername.form-control(type='text' placeholder='Name of the driver' name='driverName' required)
+                    input#drivername.form-control(type='text' placeholder='Name of the driver' name='driverName')
+                    #drivernameError.text-danger.font-weight-bold.small
                 br
 
                 .form-group
                   label.col-sm-3.control-label(for='driverName')
                     b Driver NIN
                   .col-sm-9
-                    input#drivernin.form-control(type='text' placeholder='Name of the driver' name='driverNin' required)
+                    input#drivernin.form-control(type='text' placeholder='Name of the driver' name='driverNin')
+                    #driverninError.text-danger.font-weight-bold.small
                 br
                 // Adding phone number,
                 .form-group
-                  label.col-sm-3.control-label(for='phoneNumber')
+                  label.col-sm-3.control-label(for='number')
                     b Phone number* 
                   .col-sm-9
-                    input#phoneNumber.form-control(type='phoneNumber' placeholder='Phone number' name='phoneNumber' required)
+                    input#phonenumber.form-control(type='phoneNumber' placeholder='256784528444' name='phoneNumber')
+                    #phonenumberError.text-danger.font-weight-bold.small
                 br
                 .form-group
                   label.col-sm-3.control-label(for='entryDate')
                     b Date*
                   .col-sm-9
-                    input#entryDate.form-control(type='date' name='entryDate' required)
+                    input#entryDate.form-control(type='date' name='entryDate')
+                    #entrydateError.text-danger.font-weight-bold.small
                 br
                 .form-group
                   label.col-sm-3.control-label(for='time')
                     b Entry Time*
                   .col-sm-9
-                    input#entryTime.form-control(type='time' placeholder='Enter Entry time' name ='entryTime' required)
+                    input#entryTime.form-control(type='time' placeholder='Enter Entry time' name ='entryTime')
+                    #entrytimeError.text-danger.font-weight-bold.small
                   br
                   .form-group
                   label.col-sm-3.control-label(for='vehicleType')
                     b Time of parking
                   .col-sm-9
-                    select.form-control(name='parkingtime' autofocus='' required)
+                    select#period.form-control(name='parkingtime' autofocus='')
                       option(value='Default' selected='') Click to Select period
                       option(value='DAY') Day
                       option(value='NIGHT') Night
                       option(value='LESS THAN 3 HOURS') Less Thann 3 Hours
+                      #periodError.text-danger.font-weight-bold.small
                       
                 br
                 
@@ -90,7 +100,7 @@ block content
                   label.col-sm-3.control-label(for='vehicleType')
                     b Amount*
                   .col-sm-9
-                    select.form-control(type='number' name='amount' autofocus='' required)
+                    select#amount.form-control(type='number' name='amount' autofocus='')
                       option(value='Default' selected='') Click to Select amount
                       option(value='1000') 1,000
                       option(value='2000') 2,000
@@ -98,12 +108,15 @@ block content
                       option(value='4000') 4,000
                       option(value='5000') 5,000
                       option(value='10000') 10,000
+                      #amountError.text-danger.font-weight-bold.small
                 br
 
                 .form-group
                   .col-sm-9.col-sm-offset-3
-                    span.help-block * All fields required
+                    span.help-block * All fields
                 br
 
                 button.btn.btn-primary.btn-block(type='submit' style='margin-left: 150px; background-color:#222d41;') Register
                 button.btn.btn-outline-success.logout-button(type='reset' style='margin-left: 10px; border-color:#222d41;') Clear
+
+              script(src='/vehicleValidation.js')

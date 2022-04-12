@@ -24,29 +24,32 @@ head
               // the Input section or div starts here with a form
               .col-md-5.col-lg-7.d-flex.align-items-center
                 .card-body.p-4.p-lg-5.text-black
-                  form(method="POST" action="/")
+                  form#signin(method="POST" action="/")
                     // Login Header
                     .d-flex.align-items-center.mb-3.pb-1
                       span.logo-container.h1.mb-0 LOGIN
                     // End of Header
                     // Email section
                     .email-section.form-outline.mb-4(data-validate='Valid email is required: ex@abc.xyz')
-                      input.e-mail-input.form-control.form-control-lg(type='text' name='email' placeholder='Email' style='font-size: 20px;')
+                      input#email.e-mail-input.form-control.form-control-lg(type='text' name='email' placeholder='Email' style='font-size: 20px;')
                     // end of email section
                     // password input input
                     .password-section.form-outline.mb-4(data-validate='Password is required')
-                      input.password-input.form-control.form-control-lg(type='password' name='password' placeholder='Password' style='font-size: 20px;')
+                      input#password.password-input.form-control.form-control-lg(type='password' name='password' placeholder='Password' style='font-size: 20px;')
+                      #passwordError.text-danger.font-weight-bold.small
                     // login Button
                     .login-button-div
                       button.login-button.btn.btn-lg.btn-block(style='font-size: 24px; background-color: #2E4053; color: white;' type="submit")
                         | Login 
+
+                      script(src='/loginvalidation.js')
                     // forgot password
                     .forgot-user
-                      span.txt1(style='font-size: 19px;')
+                      span.txt1(style='font-size: 17px;')
                         | Forgot &nbsp;
-                      a(style='font-size: 19px; color: #2E4053;' href='#')
+                      a(style='font-size: 17px; color: #2E4053;' href='#')
                         | Password &nbsp;
-                      span.txt1(style='font-size: 19px;')
+                      span.txt1(style='font-size: 17px;')
                         || &nbsp; Not registered? 
-                      a(style='font-size: 19px; color: #2E4053;' href='/register')
+                      a(style='font-size: 17px; color: #2E4053;' href='/register')
                         | Create an account

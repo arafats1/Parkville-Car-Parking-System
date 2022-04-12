@@ -62,7 +62,7 @@ div
                           button.btn.btn-primary(type='button'  data-bs-target='#staticBackdrop' style='background-color:#f1f1f1; margin-right: 5px;')
                               img(src='../images/edit4.png' style='width: 20px; height: 20px;')
                     
-                              form(method="GET" action="/deleteBattery/"+signoff._id)
+                              form(method="GET" action="/deleteSignoff/"+signoff._id)
                                 input(type="hidden" name="delete" value=signoff._id)
                                 button.btn.btn-danger(type='submit' data-bs-toggle='modal' onclick='myFunction()' data-bs-target='#staticBackdrop')
                                   img(src='../images/delete-332.png' style='width: 20px; height: 20px;')
