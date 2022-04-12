@@ -4,11 +4,11 @@ const Register = require('../models/registerModel');
 
 
 
-
+//The router gets the report page and renders it
 router.get('/vehicleReport', async(req,res)=>{
-    // to pick data from the database
+    
     try {
-        // helps return all the members in the collection clients
+        //This will pick information in the schema
         const data = await Register.find({}).sort({$natural:-1});
 
         //The sum aggregate
@@ -20,6 +20,8 @@ router.get('/vehicleReport', async(req,res)=>{
           registers : data,
           total:totalParking[0]
         });
+
+        //Incase of an error, render error
       } catch(error) {
         return res.status(400).send(
           { 

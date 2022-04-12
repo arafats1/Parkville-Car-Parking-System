@@ -64,13 +64,12 @@ router.get("/updatebattery/:id", async (req, res) => {
       }
   });
   
+  //After updating, the following method posts the changes to the database
   router.post("/updatebattery", async (req, res) => {
-    // if (req.session.user) {
       try {
         await Battery.findOneAndUpdate({ _id: req.query.id }, req.body)
         res.redirect("/batteryReport");
-        // console.log(_id);
-        // res.redirect("back");
+       
       } catch (error) {
         res.status(400).send("unable to update vehicle");
       }

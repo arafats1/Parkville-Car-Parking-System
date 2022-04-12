@@ -66,24 +66,26 @@ router.post('/vehicleRegister', (req, res) => {
 });
 
 //Editing route
+//The get method renders the edit page with retrieved data
 router.get("/update/:id", async (req, res) => {
-  // if (req.session.user) {
     try {
+      
       const updateUser = await Register.findOne({ _id: req.params.id })
       res.render('editVehicle', { register: updateUser })
-      // res.json(user);
+     
+      //If it fails catch an error
     } catch (error) {
       res.status(400).send("unable to find the user in the database");
     }
 });
 
+//This route posts back the edited data
 router.post("/update", async (req, res) => {
-  // if (req.session.user) {
+
     try {
       await Register.findOneAndUpdate({ _id: req.query.id }, req.body)
       res.redirect("/vehicleReport");
-      // console.log(_id);
-      // res.redirect("back");
+   
     } catch (error) {
       res.status(400).send("unable to update vehicle");
     }
@@ -102,18 +104,6 @@ router.get('/deleteVehicle/:id', async(req, res)=> {
         res.status(400).send('Unable to delete Vehicle from database');
       }
   });
-
-  // UPDATE USER
-// router.post('/editVehicle/:id', async(req, res)=> {
-//   try{
-//     await Register.updateOne({_id:req.params.id})
-//     res.redirect('/vehicleReport');
-//   }
- 
-//   catch{
-//         res.status(400).send('Unable to delete Vehicle from database'); 
-//       }
-//   });
 
   
 module.exports = router;

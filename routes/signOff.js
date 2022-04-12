@@ -49,6 +49,31 @@ router.post('/signoff', (req,res)=> {
     }
 });
 
+//Editing route
+router.get("/updates/:id", async (req, res) => {
+    // if (req.session.user) {
+      try {
+        const updateSignoff = await Signoff.findOne({ _id: req.params.id })
+        res.render('editSignoff', { signoff: updateSignoff })
+        // res.json(user);
+      } catch (error) {
+        res.status(400).send("unable to find the user in the database");
+      }
+  });
+  
+  router.post("/updates", async (req, res) => {
+    // if (req.session.user) {
+      try {
+        await Signoff.findOneAndUpdate({ _id: req.query.id }, req.body)
+        res.redirect("/signOffReport");
+        // console.log(_id);
+        // res.redirect("back");
+      } catch (error) {
+        res.status(400).send("unable to update Signoff");
+      }
+  });
+  
+
 // DELETE A sign off entry
 router.get('/deleteSignoff/:id', async(req, res)=> {
     try{

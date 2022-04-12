@@ -3,14 +3,13 @@ const router = express.Router();
 const Battery = require('../models/batteryModel');
 
 
-
+//This brings the report page
 router.get('/batteryReport', async(req,res)=>{
-    // to pick data from the 
-    try {
-        // helps return all the members in the collection clients
+    
+    try { 
         const data = await Battery.find({}).sort({$natural:-1});
        
-         //The sum aggregate
+         //The aggregate function to to sum values
          let totalBattery = await Battery.aggregate([
           {$group:{_id:'$all', totalBattery:{ $sum:'$amount'}}}
         ]);
@@ -19,6 +18,7 @@ router.get('/batteryReport', async(req,res)=>{
           total:totalBattery[0]
 
         })
+        //Incase there is an error retrieving then return error
       } catch(error) {
         return res.status(400).send(
           { 

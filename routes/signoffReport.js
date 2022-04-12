@@ -3,7 +3,7 @@ const router = express.Router();
 const Signoff = require('../models/signoffModel');
 
 
-
+//The router below returns the report page
 router.get('/signoffReport', async(req,res) => {
     try{
         const data = await Signoff.find({}).sort({$natural:-1});
@@ -19,6 +19,7 @@ router.get('/signoffReport', async(req,res) => {
     }
 
     catch(error){
+        //Returns an error if fetching fails
         return res.status(400).send(
             {
                 status: 400,

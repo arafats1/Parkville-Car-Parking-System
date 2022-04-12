@@ -98,7 +98,7 @@ const vehicleform = () => {
         return false;
 
     }else{
-        const drivernameRegex = /^[A-Z][a-z]{2,20}$/; // Name starts witha capital letter
+        const drivernameRegex = /^[A-Z][ A-Za-z]{2,20}$/; // Name starts witha capital letter
         if(drivernameRegex.test(drivername.value)== false){
             drivername.style.border = '1px solid red';
             drivernameError.innerHTML = 'Start drivername with capital letter';
@@ -121,7 +121,7 @@ const vehicleform = () => {
         return false;
 
     }else{
-        const ninRegex = /^[A-Z]{2}[0-9A-Z]{12}$/; // NIN should be 13 alphanumric characters and starting with two Capital letters
+        const ninRegex = /^[C][A-Z]{1}[0-9A-Z]{12}$/; // NIN should be 13 alphanumric characters and starting with two Capital letters
         if(ninRegex.test(drivernin.value)== false){
             drivernin.style.border = '1px solid red';
             driverninError.innerHTML = 'Enter correct NIN number';
@@ -144,7 +144,7 @@ const vehicleform = () => {
 
     }else{
         
-        const phonenumberRegex = /^[256][0-9]{11}$/;
+        const phonenumberRegex = /^[2][5][6][0-9]{9}$/;
         if(phonenumberRegex.test(phonenumber.value)== false){
             phonenumber.style.border = '1px solid red';
             phonenumberError.innerHTML = 'Enter valid Ugandan number';

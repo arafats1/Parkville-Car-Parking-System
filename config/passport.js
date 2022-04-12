@@ -1,13 +1,11 @@
 //This handles authentication
 const LocalStrategy = require('passport-local').Strategy;
 const UserRegister = require('../models/userRegist_model');
-const config = require('../config/database');
 const bcrypt = require('bcryptjs');
 
 module.exports = (passport) =>{
     // Local strategy
     passport.use(new LocalStrategy(function(email, password, done){
-      // match username
       let query = { email: email };
       UserRegister.findOne(query, function(err, userRegist_model){
         if(err) throw err;
@@ -27,10 +25,12 @@ module.exports = (passport) =>{
 })
 })); 
 
+//Serialize gives a user a serial number when logged into the system
 passport.serializeUser(function(userRegist_model, done) {
     done(null, userRegist_model.id);
   });
 
+  //This terminates the user serial number after leaving system
   passport.deserializeUser(function(id, done) {
     UserRegister.findById(id, function(err, userRegist_model) {
       done(err, userRegist_model);

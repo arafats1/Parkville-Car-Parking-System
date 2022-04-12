@@ -13,8 +13,6 @@ router.get('/register', (req, res) => {
 //The post function to pick up the form input
 router.post('/register', async (req, res) => {
    
-    
-
     try{
         const newUser = new UserRegister(req.body);
         let user = await UserRegister.findOne({email:req.body.email});
@@ -22,6 +20,8 @@ router.post('/register', async (req, res) => {
             return res.status(400).send('You cant register, email already exists');
         }
         else {
+
+            //Bcrypt will be used to hash the password after a user has input when registering
             bcrypt.genSalt(7,(err,salt) => {
                 bcrypt.hash(newUser.password, salt,(err,hash) =>{
                     if(err){
@@ -37,7 +37,7 @@ router.post('/register', async (req, res) => {
                     throw err;
                 }
                
-            
+            //After registering the user is redirected to the login page
                 res.redirect('/')
                 
                 
@@ -52,15 +52,6 @@ router.post('/register', async (req, res) => {
     }
 
 });
-
-// //Logout
-// router.get('/logout', function(req, res) {
-//     req.logout();
-//     req.flash('success', 'You are logged out');
-//     res.redirect('/users/login');
-//   });
-
-
     
 
 module.exports = router;

@@ -5,12 +5,16 @@ const expressValidator = require('express-validator');
 router.use(expressValidator());
 
 
+//The get router renders the tyre page with a form
 router.get('/tyre', (req, res) => {
     res.render('tyre');
 });
 
+//The router uses method post to submit information to the database
 router.post('/tyre', (req, res) => {
   try {
+
+    //Capture the input fields into variables
     const tyre = req.body.tyre;
     const tyresize = req.body.tyresize;
     const carmodel = req.body.carmodel;
@@ -26,7 +30,7 @@ router.post('/tyre', (req, res) => {
     }
 
     else{
-
+      //Creating an instance of Tyre to store the tyre information
         let newTyre = new Tyre({
             tyre:tyre,
             tyresize: tyresize,
@@ -38,7 +42,7 @@ router.post('/tyre', (req, res) => {
             date: date
 
         });
-
+        //Saving the data to the database
         newTyre.save((err) => {
             if(err){
                 console.error(err);
@@ -69,13 +73,13 @@ router.get("/tyreupdate/:id", async (req, res) => {
       }
   });
   
+  //This router posts back the updated data to the database
   router.post("/tyreupdate", async (req, res) => {
-    // if (req.session.user) {
+   
       try {
         await Tyre.findOneAndUpdate({ _id: req.query.id }, req.body)
         res.redirect("/tyreReport");
-        // console.log(_id);
-        // res.redirect("back");
+      
       } catch (error) {
         res.status(400).send("unable to update tyre");
       }

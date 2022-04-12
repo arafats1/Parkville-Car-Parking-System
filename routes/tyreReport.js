@@ -3,11 +3,11 @@ const router = express.Router();
 const Tyre = require('../models/tyreModel');
 
 
-//This routers renders the tyre report page
+//This router renders the tyre report page
 router.get('/tyreReport', async(req,res)=>{
-    // to pick data from the 
+  
     try {
-       
+       //This picks the data from the tyre schema in the database
         const data = await Tyre.find({}).sort({$natural:-1});
        
          //The sum aggregate that takes in total revenue but returns individual totals
