@@ -18,7 +18,7 @@ router.get('/batteryReport', async(req,res)=>{
           total:totalBattery[0]
 
         })
-        //Incase there is an error retrieving then return error
+        
       } catch(error) {
         return res.status(400).send(
           { 
