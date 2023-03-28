@@ -9,7 +9,7 @@ router.get('/batteryReport', async(req,res)=>{
     try { 
         const data = await Battery.find({}).sort({$natural:-1});
        
-         //The aggregate function to to sum values
+         //The aggregate function to to sum value
          let totalBattery = await Battery.aggregate([
           {$group:{_id:'$all', totalBattery:{ $sum:'$amount'}}}
         ]);
