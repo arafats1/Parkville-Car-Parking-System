@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
-
 router.get('/', (req,res) => {
     res.render('index');
 });
@@ -13,6 +12,5 @@ router.post('/', passport.authenticate('local', { failureRedirect: '/' }),(req, 
 	req.session.user = req.user
 	res.redirect('/home');
 });
-
 
 module.exports = router;
