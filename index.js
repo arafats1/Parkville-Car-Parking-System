@@ -49,7 +49,6 @@ application.use(express.urlencoded({extended:false}));
 application.use(express.json());
 application.use(express.static(path.join(__dirname, "public")));
 
-
 //These are login methods
 application.use(expressSession);
 application.use(passport.initialize()); 
