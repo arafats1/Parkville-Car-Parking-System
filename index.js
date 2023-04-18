@@ -44,7 +44,6 @@ application.engine('pug', require('pug').__express);
 application.set('view engine', 'pug');
 application.set('views', path.join(__dirname, 'views') );
 
-
 //Body parser middle-ware section
 application.use(express.urlencoded({extended:false}));
 application.use(express.json());
