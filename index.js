@@ -10,7 +10,6 @@ const expressSession = require('express-session')({
     saveUninitialized: false
   });
 
-  
 //Defining variables, routes and models
 const config = require('./config/database');
 const loginPage = require('./routes/loginPage');
