@@ -6,7 +6,7 @@ router.get('/', (req,res) => {
     res.render('index');
 });
 
-//Checks user
+//Checks the user
 router.post('/', passport.authenticate('local', { failureRedirect: '/' }),(req, res) => {
 	// console.log("This is the login data", req.body)  prints the user's credentials
 	req.session.user = req.user
