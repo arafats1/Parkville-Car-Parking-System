@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Battery = require('../models/batteryModel');
 
-
 //This brings the report page
 router.get('/batteryReport', async(req,res)=>{
     
